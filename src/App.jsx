@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.scss";
+import { evaluate } from 'mathjs';
 
 export default function App() {
   const [input, setInput] = useState("0");      // Mostra sempre l’input corrente
@@ -70,7 +71,7 @@ export default function App() {
     try {
       // Calcolo solo quando formula valida
       let exp = formula.replace(/×/g, "*").replace(/÷/g, "/");
-      let result = eval(exp);
+      let result = evaluate(exp);
       result = Math.round(result * 10000) / 10000;
 
       setInput(result.toString());
